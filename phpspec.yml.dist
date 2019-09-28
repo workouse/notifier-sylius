@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Workouse\NotifierPlugin
+        psr4_prefix: Workouse\NotifierPlugin
