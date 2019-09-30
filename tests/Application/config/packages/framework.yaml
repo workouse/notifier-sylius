@@ -5,3 +5,8 @@ framework:
     templating: { engines: ["twig"] }
     session:
         handler_id: ~
+    messenger:
+        transports:
+            async: "%env(MESSENGER_TRANSPORT_DSN)%"
+        routing:
+          'Workouse\NotifierPlugin\Message\MailNotification': async

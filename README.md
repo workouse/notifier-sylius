@@ -8,6 +8,20 @@
 
 <p align="center">You can manage all notifications (email, push-notifications, sms) for sylius commerce projects.</p>
 
+### Requirements
+
+- `composer require symfony/messenger`
+- add messenger transport dsn to .env file
+- configure your messenger.
+```
+    framework:
+        messenger:
+             transports:
+                 async: "%env(MESSENGER_TRANSPORT_DSN)%"
+             routing:
+               'Workouse\NotifierPlugin\Message\MailNotification': async
+```
+
 ## Installation
 
 1. Run `composer require workouse/notifier-sylius`.

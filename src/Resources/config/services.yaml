@@ -1,0 +1,17 @@
+services:
+  workouse.notifier.command:
+    class: Workouse\NotifierPlugin\Command\NotifierCommand
+    tags: ["console.command"]
+    arguments: ["@sylius.repository.order","@messenger.routable_message_bus","@service_container"]
+  workouse.message_handler.mail_notification:
+    class: Workouse\NotifierPlugin\MessageHandler\MailNotificationHandler
+    arguments: ["@doctrine.orm.default_entity_manager"]
+    tags:
+      -
+        name: "messenger.message_handler"
+        handles: Workouse\NotifierPlugin\Message\MailNotification
+
+  workouse.trigger.waited_cart:
+    class: Workouse\NotifierPlugin\Trigger\WaitedCart
+    arguments: ["@sylius.repository.order"]
+    public: true
